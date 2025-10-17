@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موسى - اختيار السنة الدراسية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2c3e50;
+        }
+
+        .header {
+            background: #2c3e50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .user-info {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .year-selection-container {
+            background: white;
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 500px;
+            max-width: 600px;
+            border: 1px solid #e9ecef;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .year-input-section {
+            margin-bottom: 2rem;
+        }
+
+        .year-input-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .year-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: border-color 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .year-input:focus {
+            outline: none;
+            border-color: #2c3e50;
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+        }
+
+        .year-example {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+
+        .existing-years {
+            margin-bottom: 2rem;
+        }
+
+        .existing-years-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .years-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .year-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .year-card:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .year-card.current {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+
+        .btn {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            min-width: 150px;
+        }
+
+        .btn:hover {
+            background: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            color: white;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            font-weight: 500;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: #28a745;
+        }
+
+        .notification.error {
+            background: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .year-selection-container {
+                margin: 0;
+                padding: 2rem;
+                min-width: auto;
+            }
+            
+            .years-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">موسى</div>
+        <div class="user-info">اختيار السنة الدراسية</div>
+    </div>
+
+    <div class="main-content">
+        <div class="year-selection-container">
+            <h1 class="title">اختيار السنة الدراسية</h1>
+        <p class="subtitle">اختر السنة الدراسية التي تريد العمل عليها أو أنشئ سنة جديدة</p>
+
+        <div class="existing-years" id="existingYearsSection" style="display: none;">
+            <div class="existing-years-title">السنوات الدراسية المتاحة:</div>
+            <div class="years-grid" id="yearsGrid">
+                <!-- Existing years will be populated here -->
+            </div>
+        </div>
+
+        <div class="year-input-section">
+            <label class="year-input-label">إنشاء سنة دراسية جديدة:</label>
+            <input type="text" class="year-input" id="newYearInput" placeholder="مثال: 2024/2025">
+            <div class="year-example">مثال: 2024/2025</div>
+        </div>
+
+        <div>
+            <button class="btn" id="createYearBtn">إنشاء سنة جديدة</button>
+            <button class="btn btn-secondary" id="continueBtn" style="display: none;">متابعة بالسنة المحددة</button>
+        </div>
+        </div>
+    </div>
+
+    <script src="year-selection.js"></script>
+</body>
+</html>

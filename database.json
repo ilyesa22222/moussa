@@ -1,0 +1,190 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "password",
+      "role": "admin",
+      "createdAt": "2025-10-17T00:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "زسس",
+      "price": 20,
+      "quantity": 0,
+      "category": "عام",
+      "description": "",
+      "barcode": "",
+      "createdAt": "2025-10-17T08:56:42.027Z",
+      "updatedAt": "2025-10-17T08:56:49.930Z"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "ثززثث",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "createdAt": "2025-10-17T08:58:07.828Z",
+      "updatedAt": "2025-10-17T08:58:07.828Z"
+    },
+    {
+      "id": 2,
+      "name": "ilyes",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "createdAt": "2025-10-17T09:43:06.073Z",
+      "updatedAt": "2025-10-17T09:43:06.073Z"
+    },
+    {
+      "id": 3,
+      "name": "bbbbb",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "createdAt": "2025-10-17T09:43:11.188Z",
+      "updatedAt": "2025-10-17T09:43:11.188Z"
+    },
+    {
+      "id": 4,
+      "name": "ilyes",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "createdAt": "2025-10-17T10:18:04.678Z",
+      "updatedAt": "2025-10-17T10:18:04.678Z"
+    }
+  ],
+  "deliveryNotes": [
+    {
+      "id": "DN_1760691972569_ufdjh0mij",
+      "clientId": 1,
+      "clientName": "ثززثث",
+      "date": "2025-10-18",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 30,
+          "total": 600
+        }
+      ],
+      "overallTotal": 600,
+      "createdAt": "2025-10-17T09:06:12.575Z",
+      "updatedAt": "2025-10-17T09:06:12.575Z"
+    },
+    {
+      "id": "DN_1760692623783_2noreq88y",
+      "clientId": 1,
+      "clientName": "ثززثث",
+      "date": "2025-10-17",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 56,
+          "total": 1120
+        }
+      ],
+      "overallTotal": 1120,
+      "createdAt": "2025-10-17T09:17:03.783Z",
+      "updatedAt": "2025-10-17T09:17:03.783Z"
+    },
+    {
+      "id": "DN_1760692919820_z8eqq08eu",
+      "clientId": 1,
+      "clientName": "ثززثث",
+      "date": "2025-10-17",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 56,
+          "total": 1120
+        }
+      ],
+      "overallTotal": 1120,
+      "createdAt": "2025-10-17T09:21:59.820Z",
+      "updatedAt": "2025-10-17T09:21:59.820Z"
+    },
+    {
+      "id": "DN_1760692927692_1l9evm4tp",
+      "clientId": 1,
+      "clientName": "ثززثث",
+      "date": "2025-10-17",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 56,
+          "total": 1120
+        }
+      ],
+      "overallTotal": 1120,
+      "createdAt": "2025-10-17T09:22:07.692Z",
+      "updatedAt": "2025-10-17T09:22:07.692Z"
+    },
+    {
+      "id": "DN_1760696779013_blloxpns6",
+      "clientId": 1,
+      "clientName": "ثززثث",
+      "date": "2025-10-18",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 40,
+          "total": 800
+        }
+      ],
+      "overallTotal": 800,
+      "createdAt": "2025-10-17T10:26:19.013Z",
+      "updatedAt": "2025-10-17T10:26:19.013Z"
+    },
+    {
+      "id": "DN_1760697175457_lpy429rkw",
+      "clientId": 2,
+      "clientName": "ilyes",
+      "date": "2025-10-19",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 200,
+          "total": 4000
+        }
+      ],
+      "overallTotal": 4000,
+      "createdAt": "2025-10-17T10:32:55.457Z",
+      "updatedAt": "2025-10-17T10:32:55.457Z"
+    },
+    {
+      "id": "DN_1760697194773_0f67fq8zo",
+      "clientId": 1,
+      "clientName": "ثززثث",
+      "date": "2025-10-19",
+      "items": [
+        {
+          "productId": 1,
+          "name": "زسس",
+          "price": 20,
+          "quantity": 200,
+          "total": 4000
+        }
+      ],
+      "overallTotal": 4000,
+      "createdAt": "2025-10-17T10:33:14.773Z",
+      "updatedAt": "2025-10-17T10:33:14.773Z"
+    }
+  ]
+}

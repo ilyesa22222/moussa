@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موسى - لوحة التحكم</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2c3e50;
+        }
+
+        .header {
+            background: #2c3e50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .user-info {
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+                .dashboard-container {
+            background: white;
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .dashboard-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .dashboard-subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-items: center;
+        }
+
+        .dashboard-card {
+            background: white;
+            color: #2c3e50;
+            padding: 2.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .dashboard-card:hover {
+            background: #2c3e50;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        .dashboard-card:hover .card-description {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .footer {
+            background: #2c3e50;
+            padding: 1rem 2rem;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">موسى</div>
+        <div class="user-info">مرحباً بك في نظام الإدارة</div>
+    </div>
+
+    <div class="main-content">
+        <div class="dashboard-container">
+            <h1 class="dashboard-title">لوحة التحكم الرئيسية</h1>
+            <p class="dashboard-subtitle">اختر القسم الذي تريد الوصول إليه من الخيارات أدناه</p>
+            
+            <div class="dashboard-grid">
+                <button class="dashboard-card products" id="manageProductsBtn">
+                    <div class="card-title">إدارة المنتجات</div>
+                    <div class="card-description">عرض وإدارة قائمة المنتجات والمخزون</div>
+                </button>
+                
+                <button class="dashboard-card clients" id="manageClientsBtn">
+                    <div class="card-title">إدارة العملاء</div>
+                    <div class="card-description">إدارة معلومات العملاء وبياناتهم</div>
+                </button>
+                
+                <button class="dashboard-card delivery-notes" id="createDeliveryNoteBtn">
+                    <div class="card-title">إنشاء وصل تسليم</div>
+                    <div class="card-description">إنشاء وصل تسليم جديد وطباعته</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2025 موسى - نظام إدارة المبيعات
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        // Handle manage products button click
+        document.getElementById('manageProductsBtn').addEventListener('click', () => {
+            ipcRenderer.send('navigate-to-products');
+        });
+
+        // Handle manage clients button click
+        document.getElementById('manageClientsBtn').addEventListener('click', () => {
+            ipcRenderer.send('navigate-to-clients');
+        });
+
+        // Handle create delivery note button click
+        document.getElementById('createDeliveryNoteBtn').addEventListener('click', () => {
+            ipcRenderer.send('navigate-to-delivery-note');
+        });
+    </script>
+</body>
+</html>

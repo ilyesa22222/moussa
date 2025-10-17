@@ -1,0 +1,65 @@
+{
+  "users": [],
+  "products": [
+    {
+      "id": 1,
+      "name": "baydh",
+      "price": 20,
+      "quantity": 0,
+      "category": "عام",
+      "description": "",
+      "barcode": "",
+      "createdAt": "2025-10-17T10:40:07.641Z",
+      "updatedAt": "2025-10-17T10:40:07.642Z"
+    },
+    {
+      "id": 2,
+      "name": "dajaj",
+      "price": 400,
+      "quantity": 0,
+      "category": "عام",
+      "description": "",
+      "barcode": "",
+      "createdAt": "2025-10-17T10:40:16.655Z",
+      "updatedAt": "2025-10-17T10:40:16.655Z"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "ilyes",
+      "phone": "",
+      "email": "",
+      "address": "",
+      "createdAt": "2025-10-17T10:39:41.740Z",
+      "updatedAt": "2025-10-17T10:39:41.740Z"
+    }
+  ],
+  "deliveryNotes": [
+    {
+      "id": "DN_1760697674755_bvb9lihyk",
+      "clientId": 1,
+      "clientName": "ilyes",
+      "date": "2025-10-18",
+      "items": [
+        {
+          "productId": 1,
+          "name": "baydh",
+          "price": 20,
+          "quantity": 540,
+          "total": 10800
+        },
+        {
+          "productId": 2,
+          "name": "dajaj",
+          "price": 400,
+          "quantity": 40,
+          "total": 16000
+        }
+      ],
+      "overallTotal": 26800,
+      "createdAt": "2025-10-17T10:41:14.755Z",
+      "updatedAt": "2025-10-17T10:41:14.755Z"
+    }
+  ]
+}

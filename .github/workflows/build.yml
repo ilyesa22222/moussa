@@ -1,0 +1,97 @@
+name: Build Electron App
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+        
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build for Windows
+      if: matrix.os == 'windows-latest'
+      run: npm run build:win
+      
+    - name: Build for macOS
+      if: matrix.os == 'macos-latest'
+      run: npm run build:mac
+      
+    - name: Build for Linux
+      if: matrix.os == 'ubuntu-latest'
+      run: npm run build:linux
+      
+    - name: Upload Windows Artifacts
+      if: matrix.os == 'windows-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: windows-installer
+        path: dist/*.exe
+        
+    - name: Upload macOS Artifacts
+      if: matrix.os == 'macos-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: macos-installer
+        path: dist/*.dmg
+        
+    - name: Upload Linux Artifacts
+      if: matrix.os == 'ubuntu-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: linux-installer
+        path: dist/*.AppImage
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    
+    steps:
+    - name: Download Windows Installer
+      uses: actions/download-artifact@v4
+      with:
+        name: windows-installer
+        path: ./artifacts/windows/
+        
+    - name: Download macOS Installer
+      uses: actions/download-artifact@v4
+      with:
+        name: macos-installer
+        path: ./artifacts/macos/
+        
+    - name: Download Linux Installer
+      uses: actions/download-artifact@v4
+      with:
+        name: linux-installer
+        path: ./artifacts/linux/
+        
+    - name: Upload Release Assets
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ./artifacts/windows/*.exe
+          ./artifacts/macos/*.dmg
+          ./artifacts/linux/*.AppImage
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
