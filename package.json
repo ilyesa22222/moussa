@@ -21,6 +21,7 @@
   "build": {
     "appId": "com.moussa.inventory",
     "productName": "Moussa Inventory System",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
